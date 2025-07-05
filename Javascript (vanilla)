@@ -1,3 +1,23 @@
+*변수 선언
+
+# const → 변수 선언(재선언금지, 재할당 금지) 보통은 이거씀.
+# let -> 변수선언(재선언금지, 재할당 가능) 재할당시 변수이름만 쓰고 할당하면됨,
+# var-> 옛날 변수선언 (재선언가능, 재할당가능) 근데 쓰지말자. 
+
+const a = 10;
+const b = 2;
+
+console.log(a + b);
+console.log(a * b);
+console.log(a / b);
+
+# 길이가 긴 변수를 선언할 때 → Camelcase 	
+
+ex. veryLongVariableName
+관습: string만 포함된 변수는 대문자로 쓴다(중요한 변수가 아니여서)
+
+cf. Python에서는 very_long_variable_name
+
 *데이터 타입의 종류
 
 1. Number
@@ -76,25 +96,7 @@ else if도 사용가능.
 
 ________________________________________________
 
-*변수 선언
 
-# const → 변수 선언(재선언금지, 재할당 금지) 보통은 이거씀.
-# let -> 변수선언(재선언금지, 재할당 가능) 재할당시 변수이름만 쓰고 할당하면됨,
-# var-> 옛날 변수선언 (재선언가능, 재할당가능) 근데 쓰지말자. 
-
-const a = 10;
-const b = 2;
-
-console.log(a + b);
-console.log(a * b);
-console.log(a / b);
-
-# 길이가 긴 변수를 선언할 때 → Camelcase
-
-ex. veryLongVariableName
-관습: string만 포함된 변수는 대문자로 쓴다(중요한 변수가 아니여서)
-
-cf. Python에서는 very_long_variable_name
 
 #주석처리 
 한줄 주석치리 //
