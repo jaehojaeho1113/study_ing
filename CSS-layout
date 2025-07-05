@@ -1,0 +1,371 @@
+----------Vite를 사용해서 개발환경 설정--------
+자동새로고침을 해주는 개발서버를 사용하기 위해 vite사용
+나중에 scss 더하기 위해서라도 vite사용
+그외에도 다양한 기능많음 리액트 뷰 자바스크립트 타입스크립트등등 다 이해함
+코드 압축 및 처리 등등 차세대 프런트엔드 개발 툴
+
+https://ko.vitejs.dev
+vite 프로젝트 생성
+npm create vite@latest
+vite 설치가 안 되어 있다면 설치 물어봄
+프로젝트 이름 정해주고, 자바스크립트 프레임워크 종류 정하기
+
+터미널에서
+cd 프로젝트폴더명 : 폴더로이동
+npm install : 설치
+code . : 비쥬얼스튜디오코드에서 열기
+
+개발 서버 실행 - npm run dev
+개발서버 종료 - 컨트롤 c
+________________________________________________________________
+
+#2.0 - #2.6
+[flex box]
+Flexbox를 사용하면 레이아웃을 구성하는 방법을 선언적으로 정의할 수 있으며, 세부적인 레이아웃 계산은 브라우저가 알아서 처리
+
+명령적 접근: 컴퓨터에게 수행할 작업의 각 단계를 일일이 지정하는 방식. 명령형 접근 방식에서는 "어떻게" 할 것인지를 설명
+선언적 접근: 컴퓨터에게 원하는 결과만 말해주고, 세부적인 수행 방법은 컴퓨터가 알아서 처리하는 방식. 선언형 접근 방식에서는 "무엇"을 할 것인지를 설명
+
+flexbox , css grid는 직속부모요소(flex container)에게 명령
+자식요소(item)의 속성도 몇가지 있음
+flex container의 자식도 flex container가 될수있음
+
+***flexbox의 규칙***
+1. 직속!부모요소에게 적용 display :flex
+2. 몇가지 속성들을 알아야한다
+
+flex container의 속성
+1. flex-direction : 주 축(main axis)의 방향을 설정,
+기본값 row 기본적으로 수평을 많이 사용하지만 수직등으로 바꿀수있음 column등
+2. justify-content : 주 축(main axis)을 따라 flex 아이템들을 정렬
+ex ) flex-start / flex-end / center / space-between / space-around ....
+3. align-items : 교차 축(cross axis)을 따라 flex 아이템들을 정렬
+ex ) flex-start / flex-end / center / stretch(자식의 height가 미정일때 교차축의 가능한 가장 크게 늘어남) ........
+* align-items 사용시 주의할점 : 기본적으로 flex container의 높이를 미설정시 자식 item의 최대높이와 똑같음
+4. gap : Flex 또는 Grid 컨테이너의 자식 요소들 사이의 간격을 설정/ 직속부모에게 사용
+ㄴ 다중라인 일경우 row-gap, column-gap을 써 행과 열에 각각 다른 갭을 줄 수 있다.
+
+flexbox axis 는 2가지로
+main axis 주축과 cross axis 교차축이 있음. / 축의 길이는 flex container의 길이와 같음.
+축들의 위치는 flex container의 direction에 따라 달라진다,
+또한 축들의 길이도 flex container의 크기에 결정된다.
+기본값 : flex-direction: row 일때 main axis 는 → cross axis 는 ↓
+flex-direction: column 일때 main axis 는 ↓ cross axis 는 →
+
+- flex 글자요소에 적용 
+ex)<div>1</div>일때
+div에도 flex를 적용시켜 1이라는 글자요소를 정렬할 수 있다.
+____________________________________________________-
+
+flex-wrap: wrap을 통해 요소의 속성을 유치한채 여러줄로 화면에 나타낼 수 있다. 기본값은 nowrap(단일라인)
+flex-flow: 주축 wrap속성 처럼 한번에 나타낼 수 있다.
+
+align-content 는 다중라인 컨테이너일때 라인 사이의 넓이를 조절할 수 있다. (주로 flex-wrap:wrap과 같이씀)
+
+flex는 부모에서 설정하지만, 자식에게 적용하는 속성들이 몇개 있다. (그러나 flex선언 자체는 부모)
+1. order : 자식들에게 order를 설정해줌으로써 자식들의 순서를 바꿀 수 있다.
+2. align-self : 자식들이 스스로의 교차축 정렬을 설정할 수 있다.
+
+flex-grow : 이걸 통해 여러 요소들간의 비율을 정해서 화면에 나타낼 수 있다. 기본값은 0
+flex-shrink : 플렉스 컨테이너가 작아질 수 록 어떤 것이 더 빨리 축소되는지를 나타낸다. 값이 클수록 먼저 축소된다. 기본값은 1, 값을 0으로 하면 축소되지 않는다.
+
+flex-basis:는 초기 크기와 같다. 초기크기가 같으면 flex-grow: 1 로 동일하게 하더라고 크기가 다를 수 있다.
+ 여기에 flex-shirnk:0을 하면 크기가 초기크기 밑으로 내려가지 않는다. 이는 min-width를 적용한것과 동일해진다. (주축의 길이를 나타낸다)
+
+flex: flex-grow , flex-shrink , flex-basis 로 짧게 작성할수 있다.
+https://flexboxfroggy.com/#ko 
+ㄴ flexbox 연습 사이트
+
+_____________________________________________________________________________________________-
+
+#3.0-#3.5
+
+CSS Grid
+
+flexbox는속성이 많지않음
+사실상 주 축만제어가능
+교차축 제어기능(align-item)이있지만 속성이 동일하지않음
+또한 flex-wrap을 통해서 여러행을제어할수있지만, 제어할수있는게 많지않음
+ui의 개별 구성 요소에 대해 flexbox를사용할수있는이유가 그러함
+grid는행과 열 가로 및세로 차원 모두를완벽하게 제어할 수 있음
+grid는 페이지 전체 레이아웃을만들수잇음
+
+grid는 flexbox와 동일하게 직계부모에게 적용해야하지만,
+flexbox와는 다르게 자식에게 직접 적용하는 속성이 꽤많다.
+
+직계부모에게 display: grid;
+행몇줄? grid-template-columns: 100px 100px 50px;
+열몇줄? grid-template-rows: 200px 100px;
+gap은 가로간격과 세로간격 다르게 가능 column-gap, row-gap
+
+*셀 = grid의 최소단위
+기본적으로 하나의셀은 행1칸열1칸을 차지한다.
+
+grid container에는 라인 번호가 존재
+라인 번호는 박스가 어디 행,열 에서 시작해서 어디서끝나는지 알려줄 일종의 좌표 시스템
+*시작과 끝에도 라인이 있다는것을 잊지말것
+
+자식에게 직접 설정하는 속성
+행의 시작설정 grid-column-start
+어느라인에서끝날지 정할때 grid-column-end
+start와 end는 항상같이설정해야하는건가??시작없이 end만하니까 틀어지네...?
+시작과 끝을 별도로 지정하는 대신 grid-column을 쓸수있다
+똑같이 열 설정 grid-row-start / grid-row-end / grid-row
+
+*음수라인 : 거의 -1만 사용
+-1 의미 : 항상 마지막 라인을 의미
+ex)하나의 셀이 하나의행을 다 차지하게 만들고 싶을 때
+grid-column-start : 1
+grid-column-end : -1
+* grid-column : 1 / -1
+
+라인에 이름을 설정가능
+grid-template-columns: [cucumber] 100px [potato] 100px [banana] 50px [brocoli];
+grid-template-rows: [korea] 200px [thailand] 100px [greece];
+또한, 셀의 시작과 끝을 설정할 때 이름을 사용하여 설정가능
+grid-column : potato / brocoli;
+gird-row : korea / greece;
+
+때로는 라인을 세거나 찾아보기 귀찮을수있음
+어디서 시작하고 어디서 끝나는지 세세히 지정해주지않고
+그냥 가로몇 세로몇을 차지하도록 간단히 설정가능
+이럴때 , span 키워드 사용
+가로2칸을 차지하고싶다 grid-row : span 2; 위아래2칸사용
+세로2칸을 차지하고싶다 grid-column : span 2; 양옆2칸사용
+또한, 시작라인을 지정하고 크기를 설정할수있음
+grid-row : 시작라인 / span 크기;
+
+fr 단위와 그리드영역
+fr단위 (fraction) : 비율과 같은 일종의 비례적인 크기를 설정가능하게 함
+flex-grow의 속성과 같이 비율을 설정해줌
+gird 크기만큼 최대한으로 공간을 차지해라!
+
+*** body의 너비는 뷰포트의너비와동일,
+하지만 높이는 정해져있지않기때문에 높이를 설정해야body grid row설정가능 ex ) body {height : 100vh; }
+grid-template-columns : 1fr 1fr 1fr 1fr;
+grid-template-rows : 1fr 1fr 1fr;
+
+grid-template-areas : 텍스트로 grid의 템플릿을 디자인하게 해줌
+grid-area
+grid-template-columns : 1fr 1fr 1fr 1fr;
+grid-template-rows : 1fr 1fr 1fr 1fr;
+grid-template-areas :
+"header header header header"
+"content content content menu"
+"content content content menu"
+"footer footer footer footer";
+여기서 이 텍스트는 태그의 이름일 필요없음, 그저 텍스트일뿐!
+그 다음 grid에게 어떤게 어떤태그인지 알려주면됨
+이걸 알려주는 방법이 grid-area 속성이다.
+grid-area : header;
+grid-area : content;
+grid-area : menu;
+grid-area : footer;
+
+=======중요!!!!!!======
+grid-template-columns : 1fr 1fr 1fr 1fr;
+grid-template-rows : 1fr 2fr 1fr;
+grid-template-areas :
+"a a a a"
+"b b b c"
+"d d d d";
+grid-area : a;
+grid-area : b;
+grid-area : c;
+grid-area : d;
+
+더 짧게 표현가능 grid-template!
+grid-template-columns + grid-template-rows + grid-template-areas = grid-template 한번에 표현가능!!!
+grid-template :
+"a a a a" 1fr
+"b b b c" 2fr
+"d d d d" 1fr / 1fr 1fr 1fr 1fr; 
+
+grid-template :
+"템플릿명 템플릿명 템플릿명" 행크기(row)
+"템플릿명 템플릿명 템플릿명" 행크기(row) / 열크기(column)
+
+*grid-area 로 꼭 템플릿과 태그를 연결시켜줘야함!!!
+============================
+
+#3.6-#3.10
+
+예상했던것보다 콘텐츠가 많은 경우에 어떻게 할지 정할 수 있다.
+> grid-auto-rows / grid-auto-flow / grid-auto-columns
+
+.grid_container {
+display: grid;
+gap: 10px;
+min-height: 50vh;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(2, 1fr);
+/* grid-auto-rows: 1fr;
+grid-auto-flow: column;
+grid-auto-columns: 0.5fr; */
+}
+*repeat(몇개,크기) 함수사용가능
+ex ) grid-template-rows: 1fr 1fr; = grid-template-rows: repeat(2, 1fr);
+
+이러할 경우 grid container가 혹시라도 추가 행을 가지게 되는 상황이 오면
+기본적으로 추가 콘텐츠는 자동으로 그리드에 새 행으로 추가되고
+추가되는 콘텐츠에 대해서 너비는 1fr로 동일하게 적용되지만,
+높이height가 지정되지않는다.
+바로 이러할때 grid-auto-rows 를 사용하여 추가되는 콘텐츠의 (행)높이를 잡을수있다.
+
+기본적으로 추가 콘텐츠는 자동으로 새 행으로 추가가된다.
+하지만 이를 변경할 수 있다. 바로 grid-auto-flow 속성 기본값은 row
+grid-auto-flow : column; 으로 변경시 새 열로 배치된다.
+그리고 기본 방향도 세로로 열을 따르도록 바뀐다.
+
+=======================================================
+
+grid의 각 셀 내부 콘텐츠가 정렬되는 방식을 변경할수있는 속성
+> justify-items / align-items value : 기본값 stretch / start / center / end
+*stretch는 child가 width(justify-items)나 height(align-items)를 가지지 않을때만 적용됨
+justify-items : 그리드 셀 안의 내용물 가로방향 이동조절
+align-items : 그리드 셀 안의 내용물 세로방향 이동조절
+*두속성을 한번에 지정할수있음 > place-items : align-items justify-items;
+
+grid-template-columns 와 grid-template-rows 는 cell의 크기를 담당할뿐
+child의 크기를 정해주지는 않음!
+기본값이 stretch기 때문에 child의 너비와 높이를 미설정했을때 크기가 동일할뿐이다.
+
+한개의 내용물만 이동시킬수도있다.
+> align-self (세로방향) / justify-self (가로방향)
+* 두속성을 한번에 지정할수있음 > place-self : align-self justify-self;
+
+셀에 span을 주어서 셀의 크기를 늘렸어도 적용되는 속성이다.
+값이 동일할경우 한번만써도됨
+ex ) place-self : center center; = place-self : center;
+
+=======================================================
+
+이번에는 셀 내부 콘텐츠 정렬이아닌 셀 자체를 정렬하는 방법에 대해 알아보자.
+셀 모두를 그룹으로 묶어서 수직 / 수평 방향으로 조절
+***grid container에 여분공간이 있어야 쓸수있는 속성이므로 fr단위랑 맞지않음 px사용해야함!
+> align-content / justify-content value 기본값 start
+* 두속성을 한번에 지정할수있음 > place-content : align-content justify-content;
+
+
+.grid_container {
+display: grid;
+gap: 10px;
+min-height: 100vh;
+grid-template-columns: repeat(5, 100px);
+grid-template-rows: repeat(2, 100px);
+background-color: lightblue;
+align-content: center;
+justify-content: center;
+}
+
+.child {
+background-color: tomato;
+color: white;
+font-size: 28px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+=======================================================
+
+내용물의 사이즈에 따라 열 너비를 조절할 수 있는 키워드
+> max-content / min-content
+열의 내용물이 가질수 있는 최대/최소 사이즈로 열너비지정
+
+두번째 열을 콘텐츠가 필요한 만큼 크게 만들수있도록 그리드에게 지시
+> gird-template-columns : 1fr max-content 1fr;
+min-content : 가장 긴 단어의 길이가 최소너비가된다. 단어를 중간에 자르지는 않음
+max-content : 내용물을 한 줄에 표시하는데 필요한 크기만큼 열을 크게함
+
+키워드 말고 다른 기능도있음
+최소 크기와 최대 크기가 있는 열을 생성하도록 도와줌, 반응형 그리드 구축시 자주사용
+minmax(최소값, 최대값) 함수를 사용하면 행이나 열의 최소 크기를 지정가능
+> grid-template-columns: 1fr minmax(250px, 1fr) 1fr;
+
+repeat 함수에 넣어서도 사용가능함
+> grid-template-columns: repeat(3, minmax(300px, 1fr));
+
+=======================================================
+
+반응형 grid!
+
+2개의 키워드로 반응형 그리드 구축가능
+> auto-fit / auto-fill
+
+화면 크기에 따라 3열 2열 1열 따로 미디어쿼리를 설정하는게 아님!
+auto-fill 을 사용하면 화면 크기를 감지해서 열의 갯수를 알아서 조정해줌
+> grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+ㄴ 반드시 repeat과 함께 써야한다!
+
+*auto-fill 과 auto-fit의 차이점은, 빈공간의 차이에 있다.
+둘다 반응형 레이아웃을 만들어주는건 공통점.
+auto-fill 은 지정한 크기의 열을 최대한 많이 만든다. 그 열이 비어있다고 하더라도! 내용물이 없더라도 열을 만듬. 지정해준 최소너비의 열로 최대한 많은 열을 만듬.
+auto-fill은 속이 비어있어도 컨테이너를 가능한 한 많은 열로 채운다
+auto-fit는 속이 비어있지않게 열을 만듬.
+
+https://cssgridgarden.com/#ko
+ㄴ grid 연습 사이트
+_________________________________________________________________________________----
+
+SCSS
+
+#4.1-#4.4
+
+SASS 로 SCSS를 브라우저가 이해할수 있도록 한다. 우리는 Vite를 씀 (전처리해야함)
+cmd로 css 폴더에 들어가서 npm add -D sass 해주면 설치된다.
+cmd에서 ctrl+c 하면 작업종료됨.
+
+scss 에서는 변수를 $를 붙여쓴다.
+ex) $bgcolor: red;
+body{
+ background-color:$bgcolor;
+}
+이런식으로 쓴다.
+
+npm run build 를 실행하면 scss가 css로 변환되어 복제되는 것을 볼 수 있다.
+이는 브라우저가 이해할 수 있도록 변환한 것으로 프로젝트를 배포할때 사용하면 된다.
+
+- SCSS는 nesting이 가능하다.
+ul {
+ li{
+   &:hover{
+	a{
+	}
+     }
+   }
+}
+이렇게 안에 있는 요소를 넣어서 정리해서 보여줄 수 있다.
+
+- %이름 은 코드 덩어리를 변수처럼 만드는 것
+@extend %이름 을 통해서 변수처럼 된 코드 덩어리를 불러올 수 있다.
+
+- @mixin 이름()은 js의 function과 같은 코드 덩어리를 만들고 이 function이 argument(인자)를 받을 수 있게 한다.
+@include 이름()를 사용하여 argument(인자)를 보내고 function을 불러온다.
+
+
+
+---[챌린지하며 공부]---
+(html에서 이미지를 칸안에 채우려고 overflow: hidden; 사용함)
+
+브라우저의 기본 설정을 끄기 위해 reset.css 를 사용하자
+
+width: max-content
+overflow-x:scroll 하면 넘치는 화면을 스크롤로 이동하여 볼수 있게해준다.
+
+윈도우 + ; 하면 이모지 등장
+
+background-image: 로 링크를 걸고
+background-size: cover 해도 된다. 항상 img 태그 쓰는것보다 이게 더 편할 수 있음.
+세세한건 background-position 으로 조절하고
+background-size:contain으로 하고
+background- repeat :no-repeat 으로 설정도 가능하다
+
+transform: rotate(각도)로 회전시킬 수 있다. (div 나 span 도 마찬가지)
+
+writing-mode로 텍스트 방향 설정가능 가로/세로
+text-orientation 으로 세세 설정가능. 방향이 세로인경우에만 반응함.
+
+div 에 span 넣고
+div는 position :relative
+span 은 position: absolute 해서 사용 많이함.
