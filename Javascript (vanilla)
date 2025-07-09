@@ -1,3 +1,5 @@
+// 검색은 mdn//
+
 **변수 선언**
 
 # const → 변수 선언(재선언금지, 재할당 금지) 보통은 이거씀.
@@ -17,7 +19,7 @@ ex. veryLongVariableName
 관습: string만 포함된 변수는 대문자로 쓴다(중요한 변수가 아니여서)
 
 cf. Python에서는 very_long_variable_name
-
+____________________________________________________________________________________
 *데이터 타입의 종류
 
 1. Number
@@ -32,6 +34,12 @@ cf. Python에서는 very_long_variable_name
 * String타입은 ""을 이용하여 입력하고 String타입의 합은 두개를 합
 쳐서 출력한다.
 
+string과 변수를 더할때
+1) "hello " + username ; 
+2) `hello ${username}` ; <--- 백틱(`)
+되도록 2번 방법을 사용하도록 하자.
+
+
 3.boolean
 
 true, false 가 있다.
@@ -43,15 +51,32 @@ undefined는 변수는 선언했으나 값을 할당하지 않음.
 
 선언: const 배열명=[ ];
 배열명[index 0부터]; 로 특정 순서의 값을 지정할 수 있음.
-배열에 값 추가하는 법 --> 배열명.push(값);
+배열에 값 추가하는 법 --> 배열명.push(값); , pop() ,splice() 등 내장 API 활용가능.
 이렇게 값 추가 및 변경가능 --> 배열명[index] = 값;
+
++ forEach를 이용한 배열 반복문
+ex)
+var arr = [];
+arr.forEach(function(value){
+	console.log(value);
+}); 이런식으로 사용가능하다.
+
++ map 과 filter 로 배열을 변형하거나 원하는 값만 추출할 수 있다.
+
++ 배열의 디스트럭처링(destructuring)
+ex) arr = [1,2];
+var [one ,two ] =arr ; 이렇게 arr 배열 내부값을 변수에 넣을 수 있다.
+
++스프레드 오퍼레이터(spread operator)
+ex) var arr =['a','b'];
+var newArr = [...arr , 'c']; 이런식으로 사용가능하다.
 
 5.object (객체) : 특성을 가진 데이터를 저장해주며, { }를 사용한다.
 ex)
 const player={
 	name:"jaeho",
 	age:22,
-	color:true,
+	color:true
 }
 이런 형식이며
 특성을 따로 불러올수 있음. ********구조 잘 이해하기******
@@ -60,6 +85,23 @@ const player={
 
 또한 특성을 따로 변경할 수있는데 객체 자체(통쨰로)를 변경하는건 불가능
 없는 특성을 추가할 수도 있다.
+
++ 객체의 디스트럭처링(destructuring)
+ex)
+var josh={
+ one : 1 ,
+ two : 2
+}
+var{one,two} = josh; 이렇게 가능하다.
+var{one : 별칭1, two :별칭2}; 이런식으로 별칭도 설정가능하다.
+
++스프레드 오퍼레이터(spread operator)
+=편하게 복사하는 방법.
+ex) var jaeho = {
+	...josh,
+	name:jaeho
+    }
+이런식으로 다른 객체를 그대로 옮겨 사용할 수 있다.
 
 **[6. function (함수)]**
 
@@ -89,7 +131,7 @@ ex2) let name = num => num +10;   << 인자가 하나일때 사용함
 
 ex) const player={
 name:"jaeho",
-sayhello:function(a){
+sayhello:function(a){      <------------ sayhello() 로 축약하여 나타낼 수 있음.
 	console.log(a);
 },
 };
@@ -109,8 +151,7 @@ else if도 사용가능.
 
 8. Loop (반복문)
 
-________________________________________________
-
+__________________________________________________________________________________
 
 
 #주석처리 
@@ -125,7 +166,19 @@ not = !== 이다.
 ex) 0==false -> true [동등연산자]
      0 ===false ->false [일치연산자])
 
-_________________________________________________
+_____________________________________________________________________________________________
+
+import, export 
+
+export {변수 , 함수}; 를 이용해 현재 파일의 변수나 함수를 내보내고,
+import {변수, 함수} from "파일 경로"; 를 이용해 다른 파일에서 함수나 변수를 가져올 수 있다.
+
+default를 이용하면 하나만 사용함.
+export default a;
+import a from " 파일 경로"; 형식으로 사용한다.
+
+import 라이브러리 이름 from "라이브러리이름"; 으로 라이브러리 모듈을 가져올 수 있다.
+_________________________________________________________________________________________________
 
 prompt( ); 는 사용자에게 창을 띄워 값을 받는 함수. (근데 오래된 방법이여서 별로임 css도 못함)
 	-> 여기서 받는 값은 string 으로 변환됨. 
@@ -201,11 +254,7 @@ event.preventDefault(); //브라우저가 기본동작을 실행하지 못하게
 ----> preventDefault()함수를 이용하여 브라우저의 기본 동작을 막을 수 있다. (argument의 함수중 하나)
 -------------------------------
 
-string과 변수를 더할때
-1) "hello " + username ; 
-2) `hello ${username}` ;
-되도록 2번 방법을 사용하도록 하자.
------------------------
+
 
 localStorage.setItem(key,value);
 - 로컬 저장소에 해당 키와 값을 저장함
