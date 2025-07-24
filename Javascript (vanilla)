@@ -46,10 +46,18 @@ ________________________________________________________________________________
 
 4. arrary (배열)
 
-선언: const 배열명=[ ];
-배열명[index 0부터]; 로 특정 순서의 값을 지정할 수 있음.
-배열에 값 추가하는 법 --> 배열명.push(값); , pop() ,splice() 등 내장 API 활용가능.
-이렇게 값 추가 및 변경가능 --> 배열명[index] = 값;
+	선언: const 배열명=[ ]; , new Array(); 로 배열생성 가능.
+	배열명[index 0부터]; 로 특정 순서의 값을 지정할 수 있음.
+	배열에 값 추가하는 법
+		1) 뒤에 추가 -> 배열명.push(값);
+		2) 앞에 추가 -> 배열명.unshift(값);
+
+	pop() ,shift(), splice() 등 내장 API 활용가능.
+	이렇게 값 추가 및 변경가능 --> 배열명[index] = 값;
+	배열명,length 로 배열길이를 알 수 있다.
+
+	배열명.indexOf(값) 을 통해 값의 인덱스 값을 알 수 있다.
+	*배열명.includes(값) 을 통해 배열에 값이 있는지 확인 할 수 있다.
 
 + forEach를 이용한 배열 반복문
 ex)
@@ -102,27 +110,28 @@ ex) var jaeho = {
 
 **[6. function (함수)]**
 
-ex) function plus(x,y){
-	console.log(x+y)}
-형식이다. plus 함수명, 소괄호에는 parameter (매개변수 또는 인자).
-함수를 호출할때 plus(a,b) 형식인데 a와b는 argument(인수)이다
+	1.함수선언문
+		ex) function plus(x,y){
+			console.log(x+y)}
+		형식이다. plus 함수명, 소괄호에는 parameter (매개변수 또는 인자).
+		함수를 호출할때 plus(a,b) 형식인데 a와b는 argument(인수)이다
+	
+		함수를 통해 결과값을 받기 원할때는 return을 사용한다.
+		(해당 함수의 결과값을 돌려주는것)
+		한번 return하면 해당 함수는 끝난다. 
 
-함수를 통해 결과값을 받기 원할때는 return을 사용한다.
-(해당 함수의 결과값을 돌려주는것)
-한번 return하면 해당 함수는 끝난다. 
+	** 2.함수표현식 작성 (자바스크립트의 일급함수 성질-> 함수를 변수처럼 활용함)
+		 ex) let name =function(매개변){
+			console.log('hi');
+		    }
 
-+ 함수표현식 작성 (자바스크립트의 일급함수 성질-> 함수를 변수처럼 활용함)
- ex) let name =function(){
-	console.log('hi');
-    }
-
-함수표현을 화살표 함수를 이용해 더 간단하게 나타낼 수 있다.
-ex) let name = () => {
-	console.log('hi');
-    }
-*화살표 함수를 활용 문법
-ex1) let name = () => 'a';        << 함수에 return 값만 사용할때
-ex2) let name = num => num +10;   << 인자가 하나일때 사용함
+		2.1 함수표현을 화살표 함수를 이용해 더 간단하게 나타낼 수 있다.
+		ex) let name = (a,b) => {
+			console.log(a,b);
+		    }
+		** 화살표 함수를 활용 문법
+		ex1) let name = () => 'a';        << 함수에 return 값만 사용할때
+		ex2) let name = num => num +10;   << 인자가 하나일때 사용함
 
 6.5 **객체안에 함수 정의 할때 **
 
@@ -137,14 +146,33 @@ sayhello:function(a){      <------------ sayhello() 로 축약하여 나타낼 �
 
 7. conditional (조건문)
 
-	if(조건){
-	 true일때 실행문
-	}
-	else{
+	1.if/else 문
+
+		if(조건){
+		 true일때 실행문
+		}
+		else{
+		
+		}
+
+	2. switch 문
+
+		switch(a){
+			case 'a':
+				break;
+			case 'b':
+				break;
+			default:
+				break;
+		}
+
+	3. 조건부 연산자
 	
-	}
+		조건 ? 참일때 : 거짓일때
+		ex) 4>5 ? 'true' : 'false';
+
+		** 조건부 연산자는 템플릿 리터럴 사용 가능하다.
 	
-	else if도 사용가능.
 
 8. Loop (반복문)
 
