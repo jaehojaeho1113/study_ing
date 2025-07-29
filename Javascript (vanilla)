@@ -256,6 +256,8 @@ console.dir() 는 객체의 속성을 파악하는 것.
 
 _______________중요__________________________
 
+[DOM (document object model)]
+
 document 객체는 html에서 가져온거임.
 window와 document의 body,head,title 이런 것들은 중요하기때문에 기본적으로 호출가능.
 나머지 요소들은 불러와야함. (아래방식(?))
@@ -263,7 +265,8 @@ window와 document의 body,head,title 이런 것들은 중요하기때문에 기
 document.getElementBy~ 함수로 html에서 id를 통해 요소를 찾아준다.
 (classname 이나 tagname도 가능한데 얘네는 배열로 반환한다.)
 찾는 값들은 " "로 묶어줘야함.
-***querySelector 를 통해 CSS 선택자방식으로 검색할 수 있다. ex) .h1:first-child
+
+*** querySelector 를 통해 CSS 선택자방식으로 검색할 수 있다. ex) .h1:first-child
 단, 하나의 element를 반환해준다.
 여러개라면 처음의 것을 가져옴.
 여러개를 가져오고 싶다면 querySelectorAll을 통해 배열로 가져올 수 있다.
