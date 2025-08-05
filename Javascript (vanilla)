@@ -273,18 +273,29 @@ document.getElementBy~ 함수로 html에서 id를 통해 요소를 찾아준다.
 
 요소를 찾고나면 JS에서 변경가능. ex) 요소.innerText="변경";
 
-------------------------JS 이벤트 설정하기-------------
+
+input 태그에서 받는 값은 .value 로 가져올 수 있다.
+
+Math.random() 을 통해 0에서 1사이의 수를 얻을 수 있다. 
+
+
+------------------------[JS 이벤트 설정하기]-------------
 console.dir의 요소중에서 on이 붙은 것들이 event임.
 *** eventListener: JS에게 무슨 event를 listen하고 싶은지 알려줘야함. ***
 ex) title.addEventListener("click",실행할 함수 이름) 
 ***함수명만 써줘야함 ( )는 쓰지 않기!! -> 이벤트가 발생하면 JS가 실행시키는 것이기 때문!
 
 listen하고 싶은 event 찾는방법
-1. 구글에 element 이름 검색 ex) h1 html element mdn
-2. 그중에 web APIs가 포함된 페이지 찾기.
-혹은 console.dir()을 통해서 on이 앞에 있는 event 찾기
+	1. 구글에 element 이름 검색 ex) h1 html element mdn
+	2. 그중에 web APIs가 포함된 페이지 찾기.
+	혹은 console.dir()을 통해서 on이 앞에 있는 event 찾기
 
 ---------------CSS와 JS----------------------------
+*** JS에서 css 스타일 넣을때 속성값에는 .style 을 사용하며
+    style 의 속성은 보통 - 가 아닌 camelCase 로 되어있다.
+    속성값은 문자열로 해야한다.
+ex)document.body.style.background =`linear-gradient(${chosenColorFirst},${chosenColorSecond})`;
+
 1) HTML파일은 CSS문서와 JS문서를 임포트 하고있음.
 2) CSS에 .active라는 class를 생성해주고
 3) addEventListener로 h1을 클릭하면 handleTitleClick 함수가 작동
@@ -358,9 +369,7 @@ appendChild()를 통해 경로의 맨 마지막에 값을 추가한다.
 ex)document.body.appendChild("");
 prepend()를 통해 경로의 맨 앞에 값을 추가한다.
 
-JS에서 css 스타일 넣을때 속성값에는 " " 을 해야해!!!!!
-ex)document.body.style.background =`linear-gradient(${chosenColorFirst},${chosenColorSecond})`;
-}
+
 
 이모지 추가
 = 윈도우,+, . 동시에 누르기
