@@ -1,0 +1,63 @@
+*테이블 생성
+
+    <table>
+        <tr>                    <--- 행
+            <th>제목셀</th>     <--- 제목셀
+            <td>1행2열</td>     <--- 열
+        </tr>
+    </table>
+
+    - <thead>,<tbody>,<tfoot> 를 이용해 표 구조를 정의할 수 있음.
+    - rowspan, colspan 으로 행 or 열을 합칠 수 있음.
+        ex) <td colspan = "합칠 셀의 개수"> 내용 </td>
+
+
+***폼
+
+    - <input>태그의 type를 통해 여러 형식을 만들 수 있음.
+        ex) text, password, color, button 등 매우 많음.
+
+        placeholder를 이용해 입력란의 내용을 소개할 수 있음.
+        value 속성을 통해 서버에 전송되는 값을 정할 수 있음.
+
+        type range, number
+            - min, max를 통해 최소 최대값을 정할 수 있음.
+            - step을 통해 단위 설정 가능.
+            - value 를 통해 초기값 설정가능.
+
+
+    **<label>태그
+
+        ex) <label for="cheese"> hi </label>
+            <input type = "checkbox" name="a" id="cheese" />
+            >> hi라는 텍스트를 클릭해도 체크박스에 표시가 되도록함.
+
+            -checkbox vs radio
+                체크박스는 모두 선택하거나 안할 수 있으나 
+                radio는 전체중 하나만 선택가능함.
+                (rado에 동일한 naame을 부여해야 그룹으로서 기능함.)
+
+
+            label태그를 통해 input과 유기적으로 연결할 수 있음.
+            name 속성은 폼을 제출했을때 a=제출값이라는 형식으로 나타남.
+
+
+    - <button>
+        폼을 제출하는 기능을함.
+        type을 button으로 하면 그냥 버튼이됨.
+        input의 type를 submit로 해도 동일함.
+
+    - <select>를 통해 선택 가능.
+        <option>을 통해 선택요소를 나타냄.
+
+    
+    - <textarea>
+        글 쓸 수 있는 영역
+        rows, cols 로 영역 크기를 조정 할 수 있음.
+
+    
+
+    **유효성 검사
+        - required 속성을 추가하면 값을 필수로 입력해야함.
+        - minlength, maxlength를 통해 최소,최대 길이를 제한 할 수 있음.
+        
