@@ -1,0 +1,29 @@
+
+투명도
+    rgba(r,g,b,불투명도) : 색상의 불투명도를 결정
+    opacity : 요소의 투명도를 결정
+
+** Position
+    static : 기본값
+    fixed : 위치가 고정됨
+    relative : top,left,right,bottom 으로 상대적인 위치 결정가능함.
+    absolute : 부모를 기준으로 요소의 위치가 자유로워짐
+        부모값은 relative로 지정함
+
+* transition(특성이름, 지속시간, 타이밍, delay )
+    - 어떤 상태에서 다른 상태로의 변화를 보여줌
+    - transition은 state가 없는 곳에 써야함.
+
+transform
+    - rotate :회전
+    - scale : 크기  
+    - translate : 위치
+
+background
+
+    background-image: url();
+    background-size: 
+        cover - 박스크기에 맞게 최대이미지로 설정
+        contain - 박스크기에 맞게 이미지가 반복됨
+    backgroud-Position: 배경이미지 기준점 설정
+
