@@ -1,0 +1,5 @@
+***반응형디자인***
+    @medai (width:100px){
+
+    }
+    max-width, min-width를 이용해 구간 설정 가능함.

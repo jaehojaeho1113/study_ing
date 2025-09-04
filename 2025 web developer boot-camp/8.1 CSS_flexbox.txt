@@ -1,0 +1,58 @@
+***[flex box]***
+Flexbox를 사용하면 레이아웃을 구성하는 방법을 선언적으로 정의할 수 있으며, 세부적인 레이아웃 계산은 브라우저가 알아서 처리
+
+명령적 접근: 컴퓨터에게 수행할 작업의 각 단계를 일일이 지정하는 방식. 명령형 접근 방식에서는 "어떻게" 할 것인지를 설명
+선언적 접근: 컴퓨터에게 원하는 결과만 말해주고, 세부적인 수행 방법은 컴퓨터가 알아서 처리하는 방식. 선언형 접근 방식에서는 "무엇"을 할 것인지를 설명
+
+flexbox , css grid는 직속부모요소(flex container)에게 명령
+자식요소(item)의 속성도 몇가지 있음
+flex container의 자식도 flex container가 될수있음
+
+***flexbox의 규칙***
+1. 직속!부모요소에게 적용 display :flex
+2. 몇가지 속성들을 알아야한다
+
+flex container의 속성
+1. flex-direction : 주 축(main axis)의 방향을 설정,
+기본값 row 기본적으로 수평을 많이 사용하지만 수직등으로 바꿀수있음 column등
+2. justify-content : 주 축(main axis)을 따라 flex 아이템들을 정렬
+ex ) flex-start / flex-end / center / space-between / space-around ....
+3. align-items : 교차 축(cross axis)을 따라 flex 아이템들을 정렬
+ex ) flex-start / flex-end / center / stretch(자식의 height가 미정일때 교차축의 가능한 가장 크게 늘어남) ........
+* align-items 사용시 주의할점 : 기본적으로 flex container의 높이를 미설정시 자식 item의 최대높이와 똑같음
+4. gap : Flex 또는 Grid 컨테이너의 자식 요소들 사이의 간격을 설정/ 직속부모에게 사용
+ㄴ 다중라인 일경우 row-gap, column-gap을 써 행과 열에 각각 다른 갭을 줄 수 있다.
+
+flexbox axis 는 2가지로
+main axis 주축과 cross axis 교차축이 있음. / 축의 길이는 flex container의 길이와 같음.
+축들의 위치는 flex container의 direction에 따라 달라진다,
+또한 축들의 길이도 flex container의 크기에 결정된다.
+기본값 : flex-direction: row 일때 main axis 는 → cross axis 는 ↓
+flex-direction: column 일때 main axis 는 ↓ cross axis 는 →
+
+- flex 글자요소에 적용 
+ex)<div>1</div>일때
+div에도 flex를 적용시켜 1이라는 글자요소를 정렬할 수 있다.
+____________________________________________________-
+
+flex-wrap: wrap을 통해 요소의 속성을 유치한채 여러줄로 화면에 나타낼 수 있다. 기본값은 nowrap(단일라인)
+flex-flow: 주축 wrap속성 처럼 한번에 나타낼 수 있다.
+
+align-content 는 다중라인 컨테이너일때 라인 사이의 넓이를 조절할 수 있다. (주로 flex-wrap:wrap과 같이씀)
+
+flex는 부모에서 설정하지만, 자식에게 적용하는 속성들이 몇개 있다. (그러나 flex선언 자체는 부모)
+1. order : 자식들에게 order를 설정해줌으로써 자식들의 순서를 바꿀 수 있다.
+2. align-self : 자식들이 스스로의 교차축 정렬을 설정할 수 있다.
+
+flex-grow : 이걸 통해 여러 요소들간의 비율을 정해서 화면에 나타낼 수 있다. 기본값은 0
+flex-shrink : 플렉스 컨테이너가 작아질 수 록 어떤 것이 더 빨리 축소되는지를 나타낸다. 값이 클수록 먼저 축소된다. 기본값은 1, 값을 0으로 하면 축소되지 않는다.
+
+flex-basis:는 초기 크기와 같다. 초기크기가 같으면 flex-grow: 1 로 동일하게 하더라고 크기가 다를 수 있다.
+ 여기에 flex-shirnk:0을 하면 크기가 초기크기 밑으로 내려가지 않는다. 이는 min-width를 적용한것과 동일해진다. (주축의 길이를 나타낸다)
+
+flex: flex-grow , flex-shrink , flex-basis 로 짧게 작성할수 있다.
+https://flexboxfroggy.com/#ko 
+ㄴ flexbox 연습 사이트
+
+
+    

@@ -1,0 +1,226 @@
+***** CSS Grid *****
+
+flexbox는속성이 많지않음
+사실상 주 축만제어가능
+교차축 제어기능(align-item)이있지만 속성이 동일하지않음
+또한 flex-wrap을 통해서 여러행을제어할수있지만, 제어할수있는게 많지않음
+ui의 개별 구성 요소에 대해 flexbox를사용할수있는이유가 그러함
+grid는행과 열 가로 및세로 차원 모두를완벽하게 제어할 수 있음
+grid는 페이지 전체 레이아웃을만들수잇음
+
+grid는 flexbox와 동일하게 직계부모에게 적용해야하지만,
+flexbox와는 다르게 자식에게 직접 적용하는 속성이 꽤많다.
+______________________________________________
+직계부모에게 display: grid;
+행몇줄? grid-template-columns: 100px 100px 50px;
+열몇줄? grid-template-rows: 200px 100px;
+gap은 가로간격과 세로간격 다르게 가능 column-gap, row-gap
+
+*셀 = grid의 최소단위
+    기본적으로 하나의셀은 행1칸열1칸을 차지한다.
+
+grid container에는 라인 번호가 존재
+라인 번호는 박스가 어디 행,열 에서 시작해서 어디서끝나는지 알려줄 일종의 좌표 시스템
+*시작과 끝에도 라인이 있다는것을 잊지말것
+
+자식에게 직접 설정하는 속성
+    행의 시작설정 grid-column-start
+    어느라인에서끝날지 정할때 grid-column-end
+    start와 end는 항상같이설정해야하는건가??시작없이 end만하니까 틀어지네...?
+    시작과 끝을 별도로 지정하는 대신 grid-column을 쓸수있다
+    똑같이 열 설정 grid-row-start / grid-row-end / grid-row
+
+*음수라인 : 거의 -1만 사용
+-1 의미 : 항상 마지막 라인을 의미
+ex)하나의 셀이 하나의행을 다 차지하게 만들고 싶을 때
+grid-column-start : 1
+grid-column-end : -1
+* grid-column : 1 / -1
+
+라인에 이름을 설정가능
+grid-template-columns: [cucumber] 100px [potato] 100px [banana] 50px [brocoli];
+grid-template-rows: [korea] 200px [thailand] 100px [greece];
+또한, 셀의 시작과 끝을 설정할 때 이름을 사용하여 설정가능
+grid-column : potato / brocoli;
+gird-row : korea / greece;
+
+때로는 라인을 세거나 찾아보기 귀찮을수있음
+어디서 시작하고 어디서 끝나는지 세세히 지정해주지않고
+그냥 가로몇 세로몇을 차지하도록 간단히 설정가능
+이럴때 , span 키워드 사용
+가로2칸을 차지하고싶다 grid-row : span 2; 위아래2칸사용
+세로2칸을 차지하고싶다 grid-column : span 2; 양옆2칸사용
+또한, 시작라인을 지정하고 크기를 설정할수있음
+grid-row : 시작라인 / span 크기;
+
+fr 단위와 그리드영역
+fr단위 (fraction) : 비율과 같은 일종의 비례적인 크기를 설정가능하게 함
+flex-grow의 속성과 같이 비율을 설정해줌
+gird 크기만큼 최대한으로 공간을 차지해라!
+
+*** body의 너비는 뷰포트의너비와동일,
+하지만 높이는 정해져있지않기때문에 높이를 설정해야body grid row설정가능 ex ) body {height : 100vh; }
+grid-template-columns : 1fr 1fr 1fr 1fr;
+grid-template-rows : 1fr 1fr 1fr;
+
+grid-template-areas : 텍스트로 grid의 템플릿을 디자인하게 해줌
+grid-area
+grid-template-columns : 1fr 1fr 1fr 1fr;
+grid-template-rows : 1fr 1fr 1fr 1fr;
+grid-template-areas :
+"header header header header"
+"content content content menu"
+"content content content menu"
+"footer footer footer footer";
+여기서 이 텍스트는 태그의 이름일 필요없음, 그저 텍스트일뿐!
+그 다음 grid에게 어떤게 어떤태그인지 알려주면됨
+이걸 알려주는 방법이 grid-area 속성이다.
+grid-area : header;
+grid-area : content;
+grid-area : menu;
+grid-area : footer;
+
+=======중요!!!!!!======
+grid-template-columns : 1fr 1fr 1fr 1fr;
+grid-template-rows : 1fr 2fr 1fr;
+grid-template-areas :
+"a a a a"
+"b b b c"
+"d d d d";
+grid-area : a;
+grid-area : b;
+grid-area : c;
+grid-area : d;
+
+더 짧게 표현가능 grid-template!
+grid-template-columns + grid-template-rows + grid-template-areas = grid-template 한번에 표현가능!!!
+grid-template :
+"a a a a" 1fr
+"b b b c" 2fr
+"d d d d" 1fr / 1fr 1fr 1fr 1fr; 
+
+grid-template :
+"템플릿명 템플릿명 템플릿명" 행크기(row)
+"템플릿명 템플릿명 템플릿명" 행크기(row) / 열크기(column)
+
+*grid-area 로 꼭 템플릿과 태그를 연결시켜줘야함!!!
+============================
+
+#3.6-#3.10
+
+예상했던것보다 콘텐츠가 많은 경우에 어떻게 할지 정할 수 있다.
+> grid-auto-rows / grid-auto-flow / grid-auto-columns
+
+.grid_container {
+display: grid;
+gap: 10px;
+min-height: 50vh;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(2, 1fr);
+/* grid-auto-rows: 1fr;
+grid-auto-flow: column;
+grid-auto-columns: 0.5fr; */
+}
+*repeat(몇개,크기) 함수사용가능
+ex ) grid-template-rows: 1fr 1fr; = grid-template-rows: repeat(2, 1fr);
+
+이러할 경우 grid container가 혹시라도 추가 행을 가지게 되는 상황이 오면
+기본적으로 추가 콘텐츠는 자동으로 그리드에 새 행으로 추가되고
+추가되는 콘텐츠에 대해서 너비는 1fr로 동일하게 적용되지만,
+높이height가 지정되지않는다.
+바로 이러할때 grid-auto-rows 를 사용하여 추가되는 콘텐츠의 (행)높이를 잡을수있다.
+
+기본적으로 추가 콘텐츠는 자동으로 새 행으로 추가가된다.
+하지만 이를 변경할 수 있다. 바로 grid-auto-flow 속성 기본값은 row
+grid-auto-flow : column; 으로 변경시 새 열로 배치된다.
+그리고 기본 방향도 세로로 열을 따르도록 바뀐다.
+
+=======================================================
+
+grid의 각 셀 내부 콘텐츠가 정렬되는 방식을 변경할수있는 속성
+> justify-items / align-items value : 기본값 stretch / start / center / end
+*stretch는 child가 width(justify-items)나 height(align-items)를 가지지 않을때만 적용됨
+justify-items : 그리드 셀 안의 내용물 가로방향 이동조절
+align-items : 그리드 셀 안의 내용물 세로방향 이동조절
+*두속성을 한번에 지정할수있음 > place-items : align-items justify-items;
+
+grid-template-columns 와 grid-template-rows 는 cell의 크기를 담당할뿐
+child의 크기를 정해주지는 않음!
+기본값이 stretch기 때문에 child의 너비와 높이를 미설정했을때 크기가 동일할뿐이다.
+
+한개의 내용물만 이동시킬수도있다.
+> align-self (세로방향) / justify-self (가로방향)
+* 두속성을 한번에 지정할수있음 > place-self : align-self justify-self;
+
+셀에 span을 주어서 셀의 크기를 늘렸어도 적용되는 속성이다.
+값이 동일할경우 한번만써도됨
+ex ) place-self : center center; = place-self : center;
+
+=======================================================
+
+이번에는 셀 내부 콘텐츠 정렬이아닌 셀 자체를 정렬하는 방법에 대해 알아보자.
+셀 모두를 그룹으로 묶어서 수직 / 수평 방향으로 조절
+***grid container에 여분공간이 있어야 쓸수있는 속성이므로 fr단위랑 맞지않음 px사용해야함!
+> align-content / justify-content value 기본값 start
+* 두속성을 한번에 지정할수있음 > place-content : align-content justify-content;
+
+
+.grid_container {
+display: grid;
+gap: 10px;
+min-height: 100vh;
+grid-template-columns: repeat(5, 100px);
+grid-template-rows: repeat(2, 100px);
+background-color: lightblue;
+align-content: center;
+justify-content: center;
+}
+
+.child {
+background-color: tomato;
+color: white;
+font-size: 28px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+=======================================================
+
+내용물의 사이즈에 따라 열 너비를 조절할 수 있는 키워드
+> max-content / min-content
+열의 내용물이 가질수 있는 최대/최소 사이즈로 열너비지정
+
+두번째 열을 콘텐츠가 필요한 만큼 크게 만들수있도록 그리드에게 지시
+> gird-template-columns : 1fr max-content 1fr;
+min-content : 가장 긴 단어의 길이가 최소너비가된다. 단어를 중간에 자르지는 않음
+max-content : 내용물을 한 줄에 표시하는데 필요한 크기만큼 열을 크게함
+
+키워드 말고 다른 기능도있음
+최소 크기와 최대 크기가 있는 열을 생성하도록 도와줌, 반응형 그리드 구축시 자주사용
+minmax(최소값, 최대값) 함수를 사용하면 행이나 열의 최소 크기를 지정가능
+> grid-template-columns: 1fr minmax(250px, 1fr) 1fr;
+
+repeat 함수에 넣어서도 사용가능함
+> grid-template-columns: repeat(3, minmax(300px, 1fr));
+
+=======================================================
+
+반응형 grid!
+
+2개의 키워드로 반응형 그리드 구축가능
+> auto-fit / auto-fill
+
+화면 크기에 따라 3열 2열 1열 따로 미디어쿼리를 설정하는게 아님!
+auto-fill 을 사용하면 화면 크기를 감지해서 열의 갯수를 알아서 조정해줌
+> grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+ㄴ 반드시 repeat과 함께 써야한다!
+
+*auto-fill 과 auto-fit의 차이점은, 빈공간의 차이에 있다.
+둘다 반응형 레이아웃을 만들어주는건 공통점.
+auto-fill 은 지정한 크기의 열을 최대한 많이 만든다. 그 열이 비어있다고 하더라도! 내용물이 없더라도 열을 만듬. 지정해준 최소너비의 열로 최대한 많은 열을 만듬.
+auto-fill은 속이 비어있어도 컨테이너를 가능한 한 많은 열로 채운다
+auto-fit는 속이 비어있지않게 열을 만듬.
+
+https://cssgridgarden.com/#ko
+ㄴ grid 연습 사이트
